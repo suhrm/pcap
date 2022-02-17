@@ -17,7 +17,7 @@ build = "build.rs"
 libc = "0.2"
 clippy = { version = "0.0.*", optional = true }
 mio = { version = "0.6", optional = true }
-tokio = { version = "1.0", features = ["net", "rt", "macros", "rt-multi-thread"], optional = true }
+tokio = { version = "1", features = ["net", "rt", "macros", "rt-multi-thread"], optional = true }
 futures = { version = "0.3", optional = true }
 errno = "0.2"
 
@@ -36,6 +36,7 @@ regex = "1"
 # This feature enables access to the function Capture::stream.
 # This is disabled by default, because it depends on a tokio and mio
 capture-stream = ["mio", "tokio", "futures"]
+async-capture = ["tokio", "futures"]
 
 # A shortcut to enable all features.
 full = ["capture-stream"]

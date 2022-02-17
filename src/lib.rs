@@ -91,6 +91,7 @@ use winapi::shared::{
     ws2ipdef::SOCKADDR_IN6,
 };
 
+#[cfg(feature = "async-capture")]
 pub mod async_capture;
 mod raw;
 #[cfg(feature = "capture-stream")]

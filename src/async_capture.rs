@@ -1,14 +1,14 @@
-use pcap::Active;
+use super::Active;
+use super::Capture;
 use std::io;
 use tokio::io::unix::AsyncFd;
-use tokio::io::{AsyncRead, AsyncWrite};
 pub struct AsyncPcap {
-    pub inner: AsyncFd<pcap::Capture<Active>>, // pcap::Capture device
+    pub inner: AsyncFd<Capture<Active>>, // pcap::Capture device
 }
 
 impl AsyncPcap {
     pub fn new(device_name: String) -> io::Result<Self> {
-        let cap = pcap::Capture::from_device(device_name.as_str())
+        let cap = Capture::from_device(device_name.as_str())
             .expect("Could not open device")
             .promisc(true)
             .immediate_mode(true)
